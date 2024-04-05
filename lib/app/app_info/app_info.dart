@@ -1,6 +1,6 @@
 class AppInfo {
-  static String webUrl ='https://21tvbd.com/';
-  static String appName = 'NEWS 16 TV live';
+  static String webUrl ='https://rajdhani.tv/';
+  static String appName = 'Rajdhani TV live';
   static String packageName = 'com.example.amin_agent';
   static String developerName = 'Abir';
   static String developerGmail = 'abir80503@gmail.com';
