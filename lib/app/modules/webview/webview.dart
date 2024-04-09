@@ -14,7 +14,7 @@ class LoadTv extends StatefulWidget {
 
 class _LoadTvState extends State<LoadTv> {
   final GlobalKey webViewKey = GlobalKey();
-
+  final controller = WebViewController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,7 +24,7 @@ class _LoadTvState extends State<LoadTv> {
           child: Scaffold(
               body: WebViewWidget(
             key: webViewKey,
-            controller: WebViewController()
+            controller: controller
               ..setJavaScriptMode(JavaScriptMode.unrestricted)
               ..setBackgroundColor(const Color(0x00000000))
               ..setNavigationDelegate(
@@ -60,7 +60,11 @@ class _LoadTvState extends State<LoadTv> {
 
     if (backButtonHasNotBeenPressedOrSnackBarHasBeenClosed) {
       backButtonPressTime = now;
-      CustomDialog.onBackPressed(context);
+      if (await controller.canGoBack()) {
+        controller.goBack();
+      } else {
+        CustomDialog.onBackPressed(context);
+      }
       return false;
     }
     return false;
