@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:live_tv_webview/app/modules/blank_screen/blank_screen.dart';
 
 import '../../app_info/app_info.dart';
 import '../../data/app_images.dart';
 import '../../theme/app_color.dart';
-import '../webview/webview.dart';
+import '../webview_android/webview_android.dart';
+import '../webview_desktop/webview_desktop.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,15 +20,15 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    Future.delayed(const Duration(seconds: 5)).then(
-          (value) => Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => LoadTv(
-            loadUrl: AppInfo.webUrl,
-          ),
-        ),
-      ),
-    );
+    Future.delayed(const Duration(seconds: 5))
+        .then((value) => Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+                builder: (context) => Platform.isAndroid
+                    ? LoadAndroidTv(loadUrl: AppInfo.webUrl)
+                    : Platform.isWindows
+                        ? WebviewDesktop(loadUrl: AppInfo.webUrl)
+                        : const BlankScreen()),
+            (route) => false));
     super.initState();
   }
 
@@ -37,8 +41,8 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               const Spacer(),
               SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.2,
-                  height: MediaQuery.of(context).size.width / 2.0,
+                  width: MediaQuery.of(context).size.width / 1.5,
+                  height: MediaQuery.of(context).size.width / 2.5,
                   child: Image.asset(AppImages.splashLogo)),
               const Spacer(),
               Text(AppInfo.appName,
