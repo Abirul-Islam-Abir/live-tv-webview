@@ -19,14 +19,13 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     Future.delayed(const Duration(seconds: 5))
         .then((value) => Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
                 builder: (context) => Platform.isAndroid
-                    ? LoadAndroidTv(loadUrl: AppInfo.webUrl)
+                    ? LoadAndroid(loadUrl: AppInfo.webUrl)
                     : Platform.isWindows
-                        ? WebviewDesktop(loadUrl: AppInfo.webUrl)
+                        ? LoadDesktop(loadUrl: AppInfo.webUrl)
                         : const BlankScreen()),
             (route) => false));
     super.initState();

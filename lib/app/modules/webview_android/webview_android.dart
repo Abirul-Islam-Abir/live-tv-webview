@@ -3,16 +3,16 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 import '../widgets/back_press_dialog.dart';
 
-class LoadAndroidTv extends StatefulWidget {
-  const LoadAndroidTv({super.key, required this.loadUrl});
+class LoadAndroid extends StatefulWidget {
+  const LoadAndroid({super.key, required this.loadUrl});
 
   final String loadUrl;
 
   @override
-  State<LoadAndroidTv> createState() => _LoadAndroidTvState();
+  State<LoadAndroid> createState() => _LoadAndroidState();
 }
 
-class _LoadAndroidTvState extends State<LoadAndroidTv> {
+class _LoadAndroidState extends State<LoadAndroid> {
   final GlobalKey webViewKey = GlobalKey();
   final controller = WebViewController();
   @override

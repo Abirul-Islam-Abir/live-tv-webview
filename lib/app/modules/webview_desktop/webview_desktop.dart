@@ -10,16 +10,16 @@ import '../../theme/app_color.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
-class WebviewDesktop extends StatefulWidget {
+class LoadDesktop extends StatefulWidget {
   final String loadUrl;
 
-  const WebviewDesktop({super.key, required this.loadUrl});
+  const LoadDesktop({super.key, required this.loadUrl});
 
   @override
-  State<WebviewDesktop> createState() => _ExampleBrowser();
+  State<LoadDesktop> createState() => _ExampleBrowser();
 }
 
-class _ExampleBrowser extends State<WebviewDesktop> {
+class _ExampleBrowser extends State<LoadDesktop> {
   final _controller = WebviewController();
   final _textController = TextEditingController();
   final List<StreamSubscription> _subscriptions = [];
