@@ -1,4 +1,4 @@
-package com.example.live_tv_webview
+package com.codewave.rajdhanitvapp
 
 import io.flutter.embedding.android.FlutterActivity
 

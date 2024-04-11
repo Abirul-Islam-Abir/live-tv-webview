@@ -23,7 +23,6 @@ class _ExampleBrowser extends State<LoadDesktop> {
   final _controller = WebviewController();
   final _textController = TextEditingController();
   final List<StreamSubscription> _subscriptions = [];
-  bool _isWebviewSuspended = false;
 
   @override
   void initState() {
@@ -54,7 +53,7 @@ class _ExampleBrowser extends State<LoadDesktop> {
         showDialog(
           context: context,
           builder: (_) => AlertDialog(
-            title: Text('Error'),
+            title: const Text('Error'),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +64,7 @@ class _ExampleBrowser extends State<LoadDesktop> {
             ),
             actions: [
               TextButton(
-                child: Text('Continue'),
+                child: const Text('Continue'),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
@@ -95,7 +94,7 @@ class _ExampleBrowser extends State<LoadDesktop> {
                       style: const TextStyle(color: AppColor.kGreyColor))
                 ])
               : Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(0),
                   child: Card(
                       color: Colors.transparent,
                       elevation: 0,
@@ -111,7 +110,7 @@ class _ExampleBrowser extends State<LoadDesktop> {
                                 onPressed: () {
                                   _controller.goBack();
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.arrow_back_ios_new,
                                   color: Colors.white,
                                 )))
@@ -146,7 +145,9 @@ class _ExampleBrowser extends State<LoadDesktop> {
 
   @override
   void dispose() {
-    _subscriptions.forEach((s) => s.cancel());
+    for (var s in _subscriptions) {
+      s.cancel();
+    }
     _controller.dispose();
     super.dispose();
   }

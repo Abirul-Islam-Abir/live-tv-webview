@@ -6,7 +6,7 @@ class BlankScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return   const Scaffold(
-      body: Center(child: Text('Platform unsupported!'),),
+      body: Center(child: Text('Platform unSupported!'),),
     );
   }
 }

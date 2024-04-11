@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     ? LoadAndroid(loadUrl: AppInfo.webUrl)
                     : Platform.isWindows
                         ? LoadDesktop(loadUrl: AppInfo.webUrl)
-                        : const BlankScreen()),
+                        :   const BlankScreen()),
             (route) => false));
     super.initState();
   }

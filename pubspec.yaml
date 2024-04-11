@@ -2,7 +2,7 @@ name: live_tv_webview
 description: "A new Flutter project."
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+version: 1.1.0
 
 environment:
   sdk: '>=3.3.1 <4.0.0'
@@ -17,12 +17,25 @@ dependencies:
   cupertino_icons: ^1.0.6
   webview_flutter: ^4.7.0
   webview_windows: ^0.4.0
-  flutter_launcher_icons: ^0.13.1
+  bitsdojo_window: ^0.1.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.13.1"
 
   flutter_lints: ^3.0.0
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logo/rajdhaniTv.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  windows:
+    generate: true
+    image_path: "assets/logo/rajdhaniTv.png"
+    icon_size: 48 # min:48, max:256, default: 48
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

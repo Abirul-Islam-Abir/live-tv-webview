@@ -17,6 +17,7 @@ class _LoadAndroidState extends State<LoadAndroid> {
   final controller = WebViewController();
   @override
   Widget build(BuildContext context) {
+    //com.example.rajdhanitv
     return SafeArea(
       child: PopScope(
           canPop: false,
@@ -30,12 +31,8 @@ class _LoadAndroidState extends State<LoadAndroid> {
               ..setNavigationDelegate(
                 NavigationDelegate(
                   onProgress: (int progress) {},
-                  onPageStarted: (String url) {
-                    print('$url ------------------------j');
-                  },
-                  onPageFinished: (String url) {
-                    print('$url ------------------------j');
-                  },
+                  onPageStarted: (String url) {},
+                  onPageFinished: (String url) {},
                   onWebResourceError: (WebResourceError error) {},
                   onNavigationRequest: (NavigationRequest request) {
                     if (request.url.startsWith('https://www.youtube.com/')) {
@@ -63,6 +60,7 @@ class _LoadAndroidState extends State<LoadAndroid> {
       if (await controller.canGoBack()) {
         controller.goBack();
       } else {
+        // ignore: use_build_context_synchronously
         CustomDialog.onBackPressed(context);
       }
       return false;
